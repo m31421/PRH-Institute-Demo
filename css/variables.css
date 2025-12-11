@@ -1,0 +1,202 @@
+/* ============================================
+   PRUHITHEALTH INSTITUTE - DESIGN TOKENS
+   ============================================ */
+
+/* ============================================
+   FONT FACE DECLARATIONS
+   ============================================ */
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: url("../assets/fonts/Brandon_light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: url("../assets/fonts/Brandon_light_it.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: url("../assets/fonts/Brandon_reg.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: url("../assets/fonts/Brandon_reg_it.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: url("../assets/fonts/Brandon_med.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: url("../assets/fonts/Brandon_med_it.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: url("../assets/fonts/Brandon_bld.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: url("../assets/fonts/Brandon_bld_it.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: url("../assets/fonts/Brandon_blk.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: url("../assets/fonts/Brandon_blk_it.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ============================================
+   TYPOGRAPHY SYSTEM - DESKTOP
+   ============================================ */
+:root {
+  /* Display - Fluid Type Scale */
+  --display-large: clamp(64px, 2.5vw + 56px, 104px);
+  --display-large-lh: clamp(77px, 2.06vw + 64px, 110px);
+  --display-medium: clamp(48px, 1.5vw + 43.2px, 72px);
+  --display-medium-lh: clamp(54px, 1.625vw + 48px, 80px);
+  --display-small: clamp(40px, 1.5vw + 35.2px, 64px);
+  --display-small-lh: clamp(48px, 1.375vw + 42px, 70px);
+
+  /* Header - Fluid Type Scale */
+  --header-large: clamp(34px, 1.25vw + 30px, 54px);
+  --header-large-lh: clamp(41px, 1.5vw + 36.2px, 65px);
+  --header-medium: clamp(30px, 1.125vw + 26.4px, 48px);
+  --header-medium-lh: clamp(36px, 1.375vw + 31.6px, 58px);
+  --header-small: clamp(24px, 0.375vw + 22.8px, 30px);
+  --header-small-lh: clamp(29px, 0.6875vw + 26.8px, 40px);
+  --header-small-bold: clamp(24px, 0.375vw + 22.8px, 30px);
+  --header-small-bold-lh: clamp(29px, 0.6875vw + 26.8px, 40px);
+  --header-xs: clamp(18px, 0.375vw + 16.8px, 24px);
+  --header-xs-lh: clamp(22px, 0.5625vw + 20.2px, 31px);
+  --header-xs-bold: clamp(18px, 0.375vw + 16.8px, 24px);
+  --header-xs-bold-lh: clamp(22px, 0.5625vw + 20.2px, 31px);
+
+  /* Body */
+  --body-xl: 24px;
+  --body-xl-lh: 32px;
+  --body-xl-bold: 24px;
+  --body-xl-bold-lh: 32px;
+  --body-large: 20px;
+  --body-large-lh: 27px;
+  --body-large-bold: 20px;
+  --body-large-bold-lh: 27px;
+  --body-medium: 16px;
+  --body-medium-lh: 21px;
+  --body-medium-bold: 16px;
+  --body-medium-bold-lh: 21px;
+  --body-medium-large: 18px;
+  --body-medium-large-lh: 24px;
+  --body-small: 12px;
+  --body-small-lh: 16px;
+  --body-xs: 10px;
+  --body-xs-lh: 12px;
+
+  /* Mobile body text sizes (kept for body text that doesn't need fluid scaling) */
+  --mobile-body-xl: 20px;
+  --mobile-body-xl-lh: 30px;
+  --mobile-body-xl-bold: 20px;
+  --mobile-body-xl-bold-lh: 30px;
+  --mobile-body-large: 18px;
+  --mobile-body-large-lh: 27px;
+  --mobile-body-large-bold: 18px;
+  --mobile-body-large-bold-lh: 27px;
+  --mobile-body-medium: 16px;
+  --mobile-body-medium-lh: 20px;
+  --mobile-body-small: 14px;
+  --mobile-body-small-lh: 17px;
+  --mobile-body-xs: 12px;
+  --mobile-body-xs-lh: 14px;
+
+  /* ============================================
+     COLOR SYSTEM
+     ============================================ */
+  /* Core Greens */
+  --green-hero-bg: #0F3F3A;
+  --green-primary: #146354;
+  --green-secondary: #1B7C67;
+
+  /* Neutrals */
+  --grey-900: #1E1E1E;
+  --grey-700: #3F3F3F;
+  --grey-500: #6F6F6F;
+  --grey-300: #D9D9D9;
+  --grey-100: #F4F4F4;
+  --white: #FFFFFF;
+
+  /* Accents */
+  --accent-blue: #DBEEF7;
+  --accent-green: #E3F6EB;
+
+  /* ============================================
+     UI TOKENS
+     ============================================ */
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* ============================================
+     SPACING SYSTEM - FLUID SCALE
+     ============================================ */
+  --space-xxl: clamp(72px, 8vw, 120px);
+  --space-xl: clamp(56px, 6vw, 80px);
+  --space-lg: clamp(40px, 4vw, 64px);
+  --space-md: clamp(28px, 3vw, 40px);
+  --space-sm: clamp(16px, 2vw, 24px);
+  --space-xs: clamp(8px, 1vw, 16px);
+
+  /* Mobile Spacing (Reduced) - Keep for backward compatibility */
+  --mobile-space-xxl: clamp(60px, 6vw, 72px);
+  --mobile-space-xl: clamp(40px, 4vw, 56px);
+  --mobile-space-lg: clamp(32px, 3vw, 40px);
+  --mobile-space-md: clamp(24px, 2vw, 28px);
+  --mobile-space-sm: clamp(16px, 1.5vw, 24px);
+  --mobile-space-xs: clamp(12px, 1vw, 16px);
+
+  /* ============================================
+     LAYOUT
+     ============================================ */
+  --max-width: 1600px;
+  --container-padding: 24px;
+}
+
