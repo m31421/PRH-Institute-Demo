@@ -1530,9 +1530,18 @@ section {
     padding: var(--space-sm) 0;
   }
 
+  .logo,
   .logo-image,
   .logo img {
     max-height: 24px;
+    transition: max-height 0.3s ease;
+    transform-origin: left center;
+  }
+
+  .header.scrolled .logo,
+  .header.scrolled .logo-image,
+  .header.scrolled .logo img {
+    max-height: 18px;
   }
 
   .nav {
