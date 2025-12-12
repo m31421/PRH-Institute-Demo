@@ -372,6 +372,7 @@ section {
   color: var(--white);
   font-weight: 500;
   transition: color 0.3s ease;
+  display: none;
 }
 
 .nav-link:hover {
@@ -431,26 +432,6 @@ section {
   color: var(--white);
 }
 
-.mobile-menu-toggle {
-  display: none;
-  flex-direction: column;
-  gap: var(--space-xs);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: var(--space-xs);
-}
-
-.mobile-menu-toggle span {
-  width: 24px;
-  height: 2px;
-  background-color: var(--white);
-  transition: all 0.3s ease;
-}
-
-.header.scrolled .mobile-menu-toggle span {
-  background-color: var(--grey-900);
-}
 
 /* ============================================
    HERO SECTION - FULL-BLEED SYSTEM
@@ -565,6 +546,7 @@ section {
 .hero-promo-card.animate {
   opacity: 1;
   transform: translateX(0);
+  padding: var(--space-xs);
 }
 
 .hero-promo-image {
@@ -593,7 +575,7 @@ section {
 }
 
 .hero-promo-headline {
-  font-size: var(--body-medium);
+  font-size: var(--body-large);
   line-height: 1.3;
   font-weight: 700;
   color: var(--green-primary);
@@ -603,14 +585,48 @@ section {
 .hero-promo-text {
   font-size: var(--body-medium);
   line-height: 1.5;
-  color: var(--green-primary);
+  color: var(--grey-700);
   margin: 0;
 }
 
 .hero-promo-cta {
   margin-top: var(--space-xs);
-  padding: var(--space-xs) var(--space-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--body-medium);
+  font-weight: 500;
+  color: var(--green-primary);
   align-self: flex-start;
+  transition: color 0.3s ease;
+  width: fit-content;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.hero-promo-cta::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--green-primary);
+  transition: background-color 0.3s ease;
+}
+
+.hero-promo-cta:hover {
+  color: var(--green-secondary);
+}
+
+.hero-promo-cta:hover::after {
+  background-color: var(--green-secondary);
+}
+
+.hero-promo-cta svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 .hero-features {
@@ -1528,11 +1544,36 @@ section {
   /* Header */
   .header-content {
     padding: var(--space-sm) 0;
+    position: relative;
+  }
+
+  .header-content .nav-link {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: var(--body-small);
+    color: var(--white);
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    z-index: 10;
+  }
+
+  .header.scrolled .header-content .nav-link {
+    color: var(--grey-700);
   }
 
   .logo-image,
-  .logo img {
-    max-height: 24px;
+  .logo-link .logo,
+  .logo-link img {
+    max-height: 54px;
+  }
+
+  .header.scrolled .logo-link .logo,
+  .header.scrolled .logo-link img {
+    max-height: 54px;
   }
 
   .nav {
@@ -1559,9 +1600,33 @@ section {
     visibility: visible;
   }
 
-  .nav-link {
+  .nav .nav-link {
+    display: block;
     padding: var(--space-sm) 0;
     border-bottom: 1px solid var(--grey-300);
+    color: var(--grey-700);
+  }
+
+  .header-content .nav-link {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: var(--body-medium);
+    color: var(--white);
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    z-index: 10;
+    border-bottom: none;
+  }
+
+  .header.scrolled .header-content .nav-link {
     color: var(--grey-700);
   }
 
@@ -1579,21 +1644,6 @@ section {
     width: 100%;
   }
 
-  .mobile-menu-toggle {
-    display: none;
-  }
-
-  .mobile-menu-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 8px);
-  }
-
-  .mobile-menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .mobile-menu-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(7px, -7px);
-  }
 
   /* Hero - Mobile */
   .hero {
@@ -1872,16 +1922,27 @@ section {
 
   /* Course Info CTA Box - Mobile */
   .course-info-cta {
-    bottom: var(--space-sm);
-    right: var(--space-sm);
-    left: var(--space-sm);
-    width: calc(100% - 32px);
+    display: flex;
+    width: 100%;
+    padding: 24px 16px;
     flex-direction: column;
-    gap: var(--space-sm);
+    align-items: flex-start;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(86.44999694824219px);
+    bottom: 0;
+    right: 0;
+    left: 0;
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
-    padding-bottom: var(--space-xs);
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .course-info-cta.visible {
+    margin: 0;
+    width: 100%;
   }
 
   .course-info-cta .btn {
