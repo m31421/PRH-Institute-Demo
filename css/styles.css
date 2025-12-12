@@ -1627,7 +1627,7 @@ section {
   }
 
   .header.scrolled .header-content .nav-link {
-    color: var(--grey-700);
+    color: var(--white);
   }
 
   .nav-link:hover {
