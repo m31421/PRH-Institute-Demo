@@ -114,33 +114,103 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Stat cards animation on scroll
+// Stat cards animation on scroll with number counting
 function initStatCardsAnimation() {
-  const statCards = document.querySelectorAll('.stat-card');
-  const journeySection = document.querySelector('.journey');
+  const statCards = document.querySelectorAll('.journey-stats-container .stat-card');
+  const statsContainer = document.querySelector('.journey-stats-container');
   
-  if (!statCards.length || !journeySection) return;
+  if (!statCards.length || !statsContainer) return;
   
   const observerOptions = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.3
+    threshold: 0.2
   };
   
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         statCards.forEach((card, index) => {
+          // Stagger the fade-in animation for each card
           setTimeout(() => {
             card.classList.add('animate');
-          }, index * 250); // Stagger delay: 250ms between each card
+            
+            // Start number animation when card starts fading in
+            const numberElement = card.querySelector('.stat-number');
+            if (numberElement) {
+              animateNumber(numberElement);
+            }
+          }, index * 200); // Stagger delay: 200ms between each card fade-in
         });
         observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
   
-  observer.observe(journeySection);
+  observer.observe(statsContainer);
+}
+
+// Animate number counting
+function animateNumber(element) {
+  const text = element.textContent.trim();
+  
+  // Check if it's a currency value
+  if (text.startsWith('$')) {
+    const value = parseFloat(text.replace(/[$,]/g, ''));
+    if (!isNaN(value)) {
+      animateCountUp(element, value, '$', true);
+      return;
+    }
+  }
+  
+  // Check if it's a number with comma
+  const cleanText = text.replace(/,/g, '');
+  const value = parseFloat(cleanText);
+  if (!isNaN(value)) {
+    animateCountUp(element, value, '', false);
+    return;
+  }
+  
+  // If not a number, just show it
+  element.textContent = text;
+}
+
+function animateCountUp(element, targetValue, prefix = '', isCurrency = false) {
+  const duration = 1500; // 1.5 seconds
+  const startTime = performance.now();
+  const startValue = 0;
+  
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    
+    // Easing function (ease-out)
+    const easeOut = 1 - Math.pow(1 - progress, 3);
+    const currentValue = startValue + (targetValue - startValue) * easeOut;
+    
+    // Format the number
+    let formattedValue;
+    if (isCurrency) {
+      formattedValue = prefix + Math.floor(currentValue).toLocaleString('en-US');
+    } else {
+      formattedValue = Math.floor(currentValue).toLocaleString('en-US');
+    }
+    
+    element.textContent = formattedValue;
+    
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      // Ensure final value is exact
+      if (isCurrency) {
+        element.textContent = prefix + Math.floor(targetValue).toLocaleString('en-US');
+      } else {
+        element.textContent = Math.floor(targetValue).toLocaleString('en-US');
+      }
+    }
+  }
+  
+  requestAnimationFrame(update);
 }
 
 function initRequirementsChecklistAnimation() {

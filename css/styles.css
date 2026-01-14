@@ -62,9 +62,6 @@ img {
 }
 
 /* Section-specific image overrides */
-.journey-image img {
-  border-radius: 16px;
-}
 
 .requirements-image img {
   border-radius: 16px;
@@ -895,7 +892,7 @@ section {
    JOURNEY SECTION
    ============================================ */
 .journey {
-  padding-block: var(--space-xxl);
+  padding-block: var(--space-lg);
   padding-inline: 0;
   background-color: var(--white);
   position: relative;
@@ -909,6 +906,7 @@ section {
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: var(--space-lg);
 }
 
 .journey-headline {
@@ -916,7 +914,7 @@ section {
   line-height: var(--header-medium-lh);
   font-weight: 700;
   color: var(--green-primary);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
 }
 
 .journey-intro {
@@ -929,11 +927,11 @@ section {
 .journey-content {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  gap: var(--space-lg);
+  gap: 0;
   align-items: center;
   max-width: 1400px;
   margin: 0 auto;
-  padding-left: var(--space-xl);
+  padding-left: var(--space-lg);
   padding-right: 0;
   position: relative;
   z-index: 0;
@@ -942,7 +940,7 @@ section {
 .journey-image-wrapper {
   position: relative;
   overflow: hidden;
-  padding: var(--space-xl);
+  padding: var(--space-md);
   width: 100%;
   min-width: 0;
   z-index: 0;
@@ -951,31 +949,34 @@ section {
 
 .journey-image {
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   width: 100%;
-  max-height: 600px;
+  height: 469px;
+  border-radius: 16px;
+}
+
+.journey-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .stats-overlay {
-  position: absolute;
-  bottom: var(--space-xs);
-  left: calc(var(--space-md) * -1);
-  display: flex;
-  flex-direction: column;
-  gap: calc(var(--space-sm) * 0.5);
-  width: auto;
-  max-width: 245px;
-  z-index: 10;
+  /* Deprecated - stats cards moved to journey-stats-container */
+  display: none;
 }
 
 .journey-text {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   max-width: 600px;
   position: relative;
   z-index: 1;
   margin-top: 0;
+  padding-left: var(--space-lg);
 }
 
 .program-card {
@@ -992,10 +993,10 @@ section {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
   position: relative;
   z-index: 2;
-  margin-top: var(--space-md);
+  margin-top: 0;
 }
 
 .program-icon {
@@ -1024,15 +1025,15 @@ section {
   font-size: var(--body-large);
   line-height: var(--body-large-lh);
   color: var(--grey-700);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
   max-width: 100%;
 }
 
 .program-details {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
-  margin-top: var(--space-lg);
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
   max-width: 100%;
 }
 
@@ -1107,14 +1108,29 @@ section {
   margin: 0;
 }
 
+.journey-stats-container {
+  display: flex;
+  gap: var(--space-lg);
+  max-width: 1400px;
+  margin: var(--space-lg) auto 0;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
 .stat-card {
-  background-color: #F3F8F7;
-  padding: calc(var(--space-sm) * 0.7);
-  border-radius: var(--radius-sm);
-  width: 100%;
+  background-color: #e5edeb;
+  padding: 40px 32px;
+  border-radius: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .stat-card.animate {
@@ -1123,17 +1139,22 @@ section {
 }
 
 .stat-number {
-  font-size: var(--header-small);
-  line-height: var(--header-small-lh);
-  font-weight: 600;
-  color: var(--green-primary);
-  margin-bottom: 4px;
+  font-size: 54px;
+  line-height: 54px;
+  font-weight: 700;
+  color: #0a4540;
+  margin: 0;
 }
 
 .stat-label {
-  font-size: var(--body-medium);
-  line-height: var(--body-medium-lh);
+  font-size: 20px;
+  line-height: 27px;
   color: var(--grey-700);
+  margin: 0;
+}
+
+.stat-label strong {
+  font-weight: 700;
 }
 
 /* ============================================
@@ -1382,7 +1403,7 @@ section {
   .requirements-content,
   .dual-columns {
     grid-template-columns: 1fr;
-    gap: var(--space-xl);
+    gap: 0;
   }
 
   /* Journey image adjustments */
@@ -1424,11 +1445,22 @@ section {
     .journey-text,
     .requirements-text {
       max-width: none;
+      padding-left: var(--space-md);
     }
 
     .journey-image-wrapper {
       width: 70%;
       margin: 0 auto;
+    }
+
+    .journey-image {
+      height: auto;
+      max-height: 469px;
+    }
+
+    .journey-stats-container {
+      padding-left: var(--space-lg);
+      padding-right: var(--space-lg);
     }
 
     .requirements-text {
@@ -1529,16 +1561,6 @@ section {
   .journey-intro {
     font-size: var(--mobile-body-large);
     line-height: var(--mobile-body-large-lh);
-  }
-
-  .stat-number {
-    font-size: var(--header-large);
-    line-height: var(--header-large-lh);
-  }
-
-  .stat-label {
-    font-size: var(--mobile-body-medium);
-    line-height: var(--mobile-body-medium-lh);
   }
 
   /* Header */
@@ -1774,17 +1796,23 @@ section {
 
   .journey-content {
     grid-template-columns: 1fr;
-    gap: var(--space-lg);
+    gap: 0;
     padding-left: 0;
     padding-right: 0;
   }
 
   .journey-text {
     max-width: none;
+    padding-left: var(--space-sm);
   }
 
   .journey-image-wrapper {
     padding-inline: var(--space-sm);
+  }
+
+  .journey-image {
+    height: auto;
+    max-height: 400px;
   }
 
   .requirements-content {
@@ -1832,27 +1860,28 @@ section {
     gap: var(--space-sm);
   }
 
-  /* Stats Overlay - Mobile */
-  .stats-overlay {
-    position: absolute;
-    bottom: var(--space-sm);
-    left: var(--space-sm);
-    transform: scale(0.9);
-    transform-origin: bottom left;
-    max-width: 220px;
-    margin: 0;
-    padding: 0;
-    display: flex;
+  /* Stats Container - Mobile */
+  .journey-stats-container {
     flex-direction: column;
-    gap: calc(var(--space-sm) * 0.5);
-    width: auto;
-    align-items: flex-start;
+    gap: var(--space-md);
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+    margin-top: var(--space-lg);
   }
 
   .stat-card {
-    width: auto;
-    max-width: 220px;
-    margin: 0;
+    width: 100%;
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .stat-number {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  .stat-label {
+    font-size: var(--body-large);
+    line-height: var(--body-large-lh);
   }
 
   .program-card {
