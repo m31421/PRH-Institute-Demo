@@ -1069,7 +1069,7 @@ section {
 .detail-text {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: 0;
   flex: 1;
 }
 
@@ -1110,7 +1110,7 @@ section {
 
 .journey-stats-container {
   display: flex;
-  gap: var(--space-lg);
+  gap: var(--space-sm);
   max-width: 1400px;
   margin: var(--space-lg) auto 0;
   padding-left: var(--space-lg);
